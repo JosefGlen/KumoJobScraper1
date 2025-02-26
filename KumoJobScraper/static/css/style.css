@@ -1,0 +1,90 @@
+/* The CSS that all pages are pulling from */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    text-align: center;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 60px); /* Adjust based on nav-bar height */
+}
+
+/* Navbar */
+.nav-bar {
+    display: flex;
+    position: sticky;
+    top: 0px;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2rem;
+    padding: 12px 24px; /* Replace margin with padding */
+    background: white; /* Ensure it's visible */
+}
+
+/* Navbar Links */
+.nav-bar a {
+    padding: 12px;
+}
+
+/* Navbar Containers */
+.nav-left, .nav-right {
+    display: flex;
+}
+
+/* Heading */
+h1 {
+    font-size: 4.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Button */
+.BTNLogin {
+    background-color: #4a90e2;
+    color: white;
+    font-size: 1rem;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 200px;
+    margin: 20px auto; /* Reduce margin */
+}
+
+.nav-btn {
+    /* transform: translateY(25%); */
+    margin: 0;
+    margin-right: 12px;
+    margin-left: 12px;
+    width: auto;
+}
+
+/* Sign-up text */
+.signup-text {
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+/* Subtitle */
+.subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 20px;
+}

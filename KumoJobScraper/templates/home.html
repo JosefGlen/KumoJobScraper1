@@ -1,0 +1,16 @@
+{% comment %} This is where the html for the given page goes, uses the layout.html template as a bases {% endcomment %}
+
+
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock title %}
+
+{% block content %}
+    <h1>Welcome To Kumo Job Scraper!</h1>
+    <h2 class="subtitle">A centralized Job searching tool designed with simplicity in mind</h2>
+    <button class="BTNLogin" onclick="location.href='{% url 'users:login' %}'">Login</button>
+    <br>
+    <a class="signup-text" href="{% url 'users:register' %}">New? Sign Up Here</a>
+{% endblock content %}

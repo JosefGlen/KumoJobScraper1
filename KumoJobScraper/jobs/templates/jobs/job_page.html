@@ -1,0 +1,17 @@
+{% comment %} This is where users are sent if they click on the Job Title of a listing {% endcomment %}
+{% comment %} TODO - Add saving functionality and make the page look less bare {% endcomment %}
+{% extends "layout.html" %}
+
+{% block title %}
+    {{ job.title }}
+{% endblock title %}
+
+{% block content %}
+    <section>
+        <h1>{{ job.title }}</h1>
+            <p> {{ job.company }}</p>
+            <p> {{ job.description }}</p>
+            <p> ${{ job.salary }}</p>
+            <p>{{ job.date }}</p>
+    </section>
+{% endblock content %}

@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Jobs
+{% endblock title %}
+
+{% block content %}
+    <section>
+        <h1>Jobs</h1>
+        {% comment %} Symantixs for python code {% endcomment %}
+        {% comment %} A for loop that grabs all of the jobs that are currently in the database {% endcomment %}
+        {% for job in jobs %}
+            <article class="job">
+                {% comment %} Symmantixs for accessing the data {% endcomment %}
+                <h2> 
+                    <a href="{% url 'jobs:page' slug=job.slug %}">
+                        {{ job.title }}
+                    </a>
+                </h2>
+                <p> {{ job.company }}</p>
+                <p> {{ job.description }}</p>
+                <p> ${{ job.salary }}</p>
+            </article>
+        {% endfor %}
+    </section>
+{% endblock content %}
+

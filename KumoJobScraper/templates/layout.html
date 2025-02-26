@@ -1,0 +1,50 @@
+{% comment %} This is the bases in which every page will pull from {% endcomment %}
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+            Django App
+        {% endblock %}
+    </title>
+    <link rel="Stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/main.js' %}" defer></script>
+</head>
+<body>
+    {% comment %} Checks if the user is logged in or not {% endcomment %}
+    {% if user.is_authenticated %}
+        <nav class="nav-bar">
+            <div class="nav-left">
+                <a href="/" title="Home">Home</a>
+                <a href="{% url 'jobs:list' %}" title="Search for Jobs">Search for Jobs</a>
+                <a href="{% url 'jobs:saved' %}" title="Saved Jobs">Saved Jobs</a>
+            </div>
+            <div class="nav-right">
+                <form class="logout" action="{% url 'users:logout' %}" method="post">
+                    {% csrf_token %}
+                    <button class="BTNLogin nav-btn">Logout</button>
+                </form>
+            </div>
+        </nav>
+    {% else %}
+    <nav class="nav-bar">
+        <div class="nav-left">
+            <a href="/" title="Home">Home</a>
+        </div>
+        <div class="nav-right">
+            <a href="/users/register/">Sign Up</a>
+            <a href="/users/login/">Login</a>
+        </div>
+    </nav>
+    {% endif %}
+    {% comment %} This is where the contents of the page will go, below the nav bar {% endcomment %}
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>

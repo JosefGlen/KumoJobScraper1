@@ -1,0 +1,19 @@
+{% comment %} This is where the html for the given page goes, uses the layout.html template as a bases {% endcomment %}
+
+{% extends "layout.html" %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block content %}
+    <h1>Login</h1>
+    <form class="form-with-validation" action="/users/login/" method="post">
+        {% comment %} csrf_token checks that the request came from our website {% endcomment %}
+        {% csrf_token %}
+        {% comment %} Loads up the form that we passed with the views function {% endcomment %}
+        {{ form }}
+        <button>Login</button>
+    </form>
+    <a class="signup-text" href="{% url 'users:register' %}">New? Sign Up Here</a>
+{% endblock content %}
