@@ -36,7 +36,7 @@ The **Job Scraper** is a powerful web scraping tool designed to collect job list
 
 ```sh
 # Clone the repository
-git clone https://github.com/your-repo/job-scraper.git
+git clone https://github.com/JosefGlen/KumoJobScraper1
 cd job-scraper
 
 # Create a virtual environment
