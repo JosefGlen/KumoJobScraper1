@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% comment %} This is where saved jobs will go {% endcomment %}
+
+{% block title %}
+    Saved Jobs
+{% endblock title %}
+
+{% block content %}
+    <h1>Saved Jobs</h1>
+    {% for saved_job in saved_jobs %}
+        <p> 
+            <a href="{% url 'jobs:page' id=saved_job.job.id %}">
+                {{ saved_job.job.title }}
+            </a> 
+            at {{ saved_job.job.company }}
+        </p>
+        
+    {% comment %} If the list is empty, let the user know {% endcomment %}
+    {% empty %}
+        <p>No saved jobs yet.</p>
+    {% endfor %}
+{% endblock %}
+
+{% block scripts %}{% endblock  %}
