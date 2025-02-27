@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Jobs
+{% endblock title %}
+
+{% block content %}
+    <form id="csrf-form">
+        {% csrf_token %}
+    </form>
+    <section>
+        <h1>Jobs</h1>
+        {% comment %} Symantixs for python code {% endcomment %}
+        {% comment %} A for loop that grabs all of the jobs that are currently in the database {% endcomment %}
+        {% for job in jobs %}
+            <article class="job">
+                {% comment %} Symmantixs for accessing the data {% endcomment %}
+                <h2> 
+                    <a href="{% url 'jobs:page' id=job.id %}">
+                        {{ job.title }}
+                    </a>
+                </h2>
+                <p> {{ job.company }}</p>
+                <p> {{ job.description }}</p>
+                <p> ${{ job.salary }}</p>
+                <button class="save-job-btn" 
+                data-job-id="{{ job.id }}" 
+                data-save-url="{% url 'jobs:save_job' job.id %}" 
+                data-unsave-url="{% url 'jobs:unsave_job' job.id %}">
+                    {% if job in saved_jobs %}Unsave{% else %}Save{% endif %}
+                </button>
+            </article>
+        {% endfor %}
+    </section>
+{% endblock content %}
+
+{% block scripts %}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        function getCsrfToken() {
+            return document.querySelector("#csrf-form input[name='csrfmiddlewaretoken']").value;
+        }
+    
+        document.querySelectorAll(".save-job-btn").forEach(button => {
+            button.addEventListener("click", function() {
+                let jobId = this.getAttribute("data-job-id");
+                let actionUrl = this.textContent.trim() === "Save" ? "/save-job/" : "/unsave-job/";
+                let csrfToken = getCsrfToken();
+    
+                fetch("/jobs" + actionUrl + jobId + "/", {
+                    method: "POST",
+                    headers: {
+                        "X-CSRFToken": csrfToken,
+                        "Content-Type": "application/json"
+                    }
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("HTTP error " + response.status);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    alert(data.message);
+                    this.textContent = this.textContent.trim() === "Save" ? "Unsave" : "Save";
+                })
+                .catch(error => console.error("Error:", error));
+            });
+        });
+    });
+    </script>
+{% endblock  %}
+
+

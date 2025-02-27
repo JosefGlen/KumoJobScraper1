@@ -6,6 +6,7 @@ class Jobs(models.Model):
     title = models.CharField(max_length=75)
     description = models.TextField()
     company = models.CharField(max_length=50)
+    location = models.CharField(max_length=50, default="Unknown")
     salary = models.PositiveIntegerField()
     date = models.DateField(auto_now_add=True)
     slug = models.SlugField()
