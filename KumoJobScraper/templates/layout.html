@@ -13,6 +13,7 @@
     </title>
     <link rel="Stylesheet" href="{% static 'css/style.css' %}">
     <script src="{% static 'js/main.js' %}" defer></script>
+    <meta name="csrf-token" content="{{ csrf_token }}">
 </head>
 <body>
     {% comment %} Checks if the user is logged in or not {% endcomment %}
@@ -47,4 +48,7 @@
         {% endblock %}
     </main>
 </body>
+    {% block scripts %}
+
+    {% endblock  %}
 </html>
