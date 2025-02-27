@@ -3,9 +3,7 @@ from .models import Jobs, SavedJob
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 
-
-# Create your views here.
-# Sends users to the login page
+# Sends users to the login page if not logged in
 @login_required(login_url="/users/login")
 def list(request):
     jobs = Jobs.objects.all()  # Fetch all jobs
@@ -26,10 +24,13 @@ def saved(request):
 
 @login_required
 def save_job(request, job_id):
+    # Prevents users from running this from the url
     if request.method == "POST":
+        # Grabs the matching job within jobs or passes 404 not found error
         job = get_object_or_404(Jobs, id=job_id)
+        # Creates a new instance of saved_job with the user and job as the two foreign keys
         saved_job, created = SavedJob.objects.get_or_create(user=request.user, job=job)
-
+        #Notifies the user if the job was succesfull 
         if created:
             return JsonResponse({"message": "Job saved successfully."}, status=201)
         return JsonResponse({"message": "Job already saved."}, status=200)
@@ -37,10 +38,13 @@ def save_job(request, job_id):
 
 @login_required
 def unsave_job(request, job_id):
+    # Prevents users from running this from the url
     if request.method == "POST":
+        # Grabs the matching job within jobs or passes 404 not found error
         job = get_object_or_404(Jobs, id=job_id)
         saved_job = SavedJob.objects.filter(user=request.user, job=job)
 
+        #Notifies the user if the job was succesfull 
         if saved_job.exists():
             saved_job.delete()
             return JsonResponse({"message": "Job unsaved successfully."}, status=200)

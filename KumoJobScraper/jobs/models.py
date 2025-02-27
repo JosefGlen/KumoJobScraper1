@@ -15,6 +15,7 @@ class Jobs(models.Model):
         return self.title
     
 class SavedJob(models.Model):
+    # On Delete of either User or Job, all associated objects will also be Deleted
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     job = models.ForeignKey(Jobs, on_delete=models.CASCADE)
     saved_on = models.DateTimeField(auto_now_add=True)
