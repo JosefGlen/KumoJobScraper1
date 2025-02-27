@@ -13,15 +13,3 @@ class Jobs(models.Model):
 
     def __str__(self):
         return self.title
-    
-class SavedJob(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    job = models.ForeignKey(Jobs, on_delete=models.CASCADE)
-    saved_on = models.DateTimeField(auto_now_add=True)
-
-    # Makes it so that users can't save the same job multiple times
-    class Meta:
-        unique_together = ('user', 'job')
-    
-    def __str__(self):
-        return f"{self.user.username} - {self.job.title}"
