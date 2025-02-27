@@ -30,6 +30,9 @@
                     {% if job in saved_jobs %}Unsave{% else %}Save{% endif %}
                 </button>
             </article>
+        {% comment %} Conditional Upon jobs being empty {% endcomment %}
+        {% empty %}
+            <p>There are no Jobs currently</p>
         {% endfor %}
     </section>
 {% endblock content %}
