@@ -37,14 +37,20 @@ The **Job Scraper** is a powerful web scraping tool designed to collect job list
 ```sh
 # Clone the repository
 git clone https://github.com/JosefGlen/KumoJobScraper1
-cd job-scraper
 
 # Create a virtual environment
-python -m venv env
-source env/bin/activate  # On Windows use: venv/Scripts/activate
+python -m venv .venv
+source .venv/bin/activate  # On Windows use: .venv/Scripts/activate
+
+# TroubleShooting
+# It may be neccessary to run
+Set-ExecutionPolicy Unrestricted -Scope Process
 
 # Install dependencies
 pip install -r requirements.txt
 
+# Choose the Directory
+cd KumoJobScraper
+
 # Run the Django server
-python manage.py runserver
+py manage.py runserver
