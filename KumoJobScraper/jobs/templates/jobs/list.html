@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="style.css">
 {% extends "layout.html" %}
 
 {% block title %}
@@ -13,6 +14,7 @@
         {% comment %} Symantixs for python code {% endcomment %}
         {% comment %} A for loop that grabs all of the jobs that are currently in the database {% endcomment %}
         {% for job in jobs %}
+        <!--Looking to make a box with a small shadow, and radiused border-->
             <article class="job">
                 {% comment %} Symmantixs for accessing the data {% endcomment %}
                 <h2> 
@@ -23,6 +25,7 @@
                 <p> {{ job.company }}</p>
                 <p> {{ job.description }}</p>
                 <p> ${{ job.salary }}</p>
+                <!--Looking to use bookmark instead of button, will consult-->
                 <button class="save-job-btn" 
                 data-job-id="{{ job.id }}" 
                 data-save-url="{% url 'jobs:save_job' job.id %}" 
