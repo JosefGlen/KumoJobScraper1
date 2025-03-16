@@ -26,6 +26,12 @@
                 <p> {{ job.description }}</p>
                 <p> ${{ job.salary }}</p>
                 <!--Looking to use bookmark instead of button, will consult-->
+
+                <!--Preliminary code for icon save while I diagnose my virtual enviroment issues.
+                
+                
+                
+                -->
                 <button class="save-job-btn" 
                 data-job-id="{{ job.id }}" 
                 data-save-url="{% url 'jobs:save_job' job.id %}" 
