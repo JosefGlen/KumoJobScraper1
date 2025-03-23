@@ -1,0 +1,10 @@
+/*making this the listing class for now*/
+.listing {
+    padding: 10px;
+    border: 5px;
+    border-radius: 25px;
+}
+
+.pjobclass {
+    padding: 10px;
+}
