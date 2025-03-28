@@ -6,16 +6,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time 
 
-# Might Need
-# import os
-# import django
-
-# # Set up Django environment
-# os.environ.setdefault("DJANGO_SETTINGS_MODULE", "KumoJobScraper.settings")
-# django.setup()
-
-# from jobs.models import Job  # Import the Job model
-
 def get_glassdoor_jobs_posted_today():
     """Scrape job listings from Glassdoor in Michigan"""
 
