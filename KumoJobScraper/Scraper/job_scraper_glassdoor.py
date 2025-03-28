@@ -57,7 +57,7 @@ def get_glassdoor_jobs_posted_today():
             url = job.find_element(By.CLASS_NAME, "JobCard_jobTitle__GLyJ1").get_attribute("href")
 
             job.click()
-            time.sleep(2)  # Wait for the job detail page to load
+            time.sleep(1.5)  # Wait for the job detail page to load
 
             driver.find_element(By.CLASS_NAME, "ShowMoreCTA_showMore__EtZpZ").click()
 
