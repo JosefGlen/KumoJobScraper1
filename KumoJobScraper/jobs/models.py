@@ -8,6 +8,7 @@ class Jobs(models.Model):
     company = models.CharField(max_length=50)
     location = models.CharField(max_length=50, default="Location Unknown")
     salary = models.CharField(max_length=50, default="Salary Unknown")
+    url = models.URLField(unique=True)
     date = models.DateField(auto_now_add=True)
 
     def __str__(self):
