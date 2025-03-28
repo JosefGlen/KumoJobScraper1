@@ -28,7 +28,7 @@ def get_glassdoor_jobs_posted_today():
     # location_search_box.send_keys("Michigan")  # Location
     # location_search_box.send_keys(Keys.RETURN)  # Hit the Enter key to start the search
     
-    time.sleep(5)  # Wait for the results to load
+    time.sleep(3)  # Wait for the results to load
 
     # Extract job listings
     job_listings = []
