@@ -92,13 +92,15 @@ h1 {
 /*This will be the results for Jobs class, so we can make it look good.*/
 .Joblistings {
     padding: 10px;
-    border: 5px;
-    border-color: blue;
+    border: solid;
+    border-color: #4a90e2;
     border-radius: 25px;
+    margin: 30px;
 }
 
-/*formatting the paragraph for now*/
+/*formatting the paragraph*/
 .jobdesctxt {
-    width: 100px;
-
+   width: auto;
+   padding-left: 40px;
+   padding-right: 40px;
 }
