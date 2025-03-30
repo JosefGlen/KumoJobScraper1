@@ -105,3 +105,6 @@ h1 {
    padding-right: 40px;
 }
 /*Space reserved for search bar implementaiton CSS*/
+input {
+    padding-bottom: 100px;
+}
