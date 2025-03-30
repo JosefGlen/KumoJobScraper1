@@ -88,3 +88,17 @@ h1 {
     color: #666;
     margin-bottom: 20px;
 }
+
+/*This will be the results for Jobs class, so we can make it look good.*/
+.Joblistings {
+    padding: 10px;
+    border: 5px;
+    border-color: blue;
+    border-radius: 25px;
+}
+
+/*formatting the paragraph for now*/
+.jobdesctxt {
+    width: 100px;
+
+}
