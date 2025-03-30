@@ -14,7 +14,11 @@
         {% comment %} Symantixs for python code {% endcomment %}
         {% comment %} A for loop that grabs all of the jobs that are currently in the database {% endcomment %}
         {% for job in jobs %}
-        <!--Included jobsresults class to ensure we can accuretley format the listings-->
+
+        <!--Job search bar will go here-->
+            <input type="text" placeholder="Search for Jobs...">
+
+        <!--Included jobsresults class to ensure we can accuratley format the listings-->
             <article class="job Joblistings">
                 {% comment %} Symmantixs for accessing the data {% endcomment %}
                 <h2> 
