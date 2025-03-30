@@ -7,7 +7,7 @@
 {% block content %}
     <h1>Saved Jobs</h1>
     {% for saved_job in saved_jobs %}
-        <p> 
+        <p class="Joblistings"> 
             <a href="{% url 'jobs:page' id=saved_job.job.id %}">
                 {{ saved_job.job.title }}
             </a> 

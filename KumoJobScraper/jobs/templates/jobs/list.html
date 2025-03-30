@@ -10,13 +10,13 @@
         {% csrf_token %}
     </form>
     <section>
+        <!--Job search bar will go here-->
+        <input type="text" placeholder="Search for Jobs...">
+
         <h1>Jobs</h1>
         {% comment %} Symantixs for python code {% endcomment %}
         {% comment %} A for loop that grabs all of the jobs that are currently in the database {% endcomment %}
         {% for job in jobs %}
-
-        <!--Job search bar will go here-->
-            <input type="text" placeholder="Search for Jobs...">
 
         <!--Included jobsresults class to ensure we can accuratley format the listings-->
             <article class="job Joblistings">
