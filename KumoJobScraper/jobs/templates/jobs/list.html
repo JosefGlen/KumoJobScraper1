@@ -8,10 +8,13 @@
     <form id="csrf-form">
         {% csrf_token %}
     </form>
-    <section>
-        <!--Job search bar will go here-->
-        <input type="text" placeholder="Search for Jobs...">
 
+    <section>
+
+         <!--Job search bar will go here-->
+        <div class="searchposition">     
+        <input type="text" placeholder="Search for Jobs...">
+        </div>
         <h1>Jobs</h1>
         {% comment %} Symantixs for python code {% endcomment %}
         {% comment %} A for loop that grabs all of the jobs that are currently in the database {% endcomment %}
@@ -26,7 +29,7 @@
                  <i class="fa-solid fa-bookmark"></i>
                  <i class="fa-regular fa-bookmark"></i>
                 -->
-                <button class="save-job-btn" 
+                <button class="save-job-btn buttonresults" 
                 data-job-id="{{ job.id }}" 
                 data-save-url="{% url 'jobs:save_job' job.id %}" 
                 data-unsave-url="{% url 'jobs:unsave_job' job.id %}">

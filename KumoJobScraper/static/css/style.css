@@ -110,7 +110,7 @@ input {
     border-radius: 25px;
     border-color: gray;
 }
-
+/*going to comment more on what this all does*/
 .headingjob {
     text-align: left;
     padding-left: 50px;
@@ -122,8 +122,15 @@ input {
     display: inline-flex;
 }
 
-button {
+.buttonresults {
     margin-right: auto;
     display: inline-flex;
     flex-direction: left;
+}
+.searchposition {
+    padding-bottom: 200px;
+}
+
+.formposition {
+    padding-bottom: 9px;
 }
