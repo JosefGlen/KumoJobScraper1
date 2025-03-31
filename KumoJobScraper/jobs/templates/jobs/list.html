@@ -20,6 +20,14 @@
         <!--Included jobsresults class to ensure we can accuratley format the listings-->
             <article class="job Joblistings">
                 {% comment %} Symmantixs for accessing the data {% endcomment %}
+
+                <!--Button here-->
+                <button class="save-job-btn" 
+                data-job-id="{{ job.id }}" 
+                data-save-url="{% url 'jobs:save_job' job.id %}" 
+                data-unsave-url="{% url 'jobs:unsave_job' job.id %}">
+                    {% if job in saved_jobs %}Unsave{% else %}Save{% endif %}
+                </button>
                 <h2> 
                     <a href="{% url 'jobs:page' id=job.id %}">
                         {{ job.title }}
@@ -29,12 +37,7 @@
                 <p class="jobdesctxt">Description: {{ job.description }}</p>
                 <p>Salary:  ${{ job.salary }}</p>
                 <!--Looking to use bookmark instead of button, will consult-->
-                <button class="save-job-btn" 
-                data-job-id="{{ job.id }}" 
-                data-save-url="{% url 'jobs:save_job' job.id %}" 
-                data-unsave-url="{% url 'jobs:unsave_job' job.id %}">
-                    {% if job in saved_jobs %}Unsave{% else %}Save{% endif %}
-                </button>
+                
             </article>
         {% comment %} Conditional Upon jobs being empty {% endcomment %}
         {% empty %}
