@@ -53,48 +53,7 @@
 {% endblock content %}
 
 {% block scripts %}
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        function getCsrfToken() {
-            return document.querySelector("#csrf-form input[name='csrfmiddlewaretoken']").value;
-        }
-        //Gabs all of the buttons and applies the click listner
-        document.querySelectorAll(".save-job-btn").forEach(button => {
-            button.addEventListener("click", function() {
-                //Attribute is defined on creation
-                let jobId = this.getAttribute("data-job-id");
-                //Checks if the content of the button has the word save, then adds the appropriate url
-                let actionUrl = this.textContent.trim() === "Save" ? "/save-job/" : "/unsave-job/";
-                let csrfToken = getCsrfToken();
-    
-                //Calls a fetch to the views for the function
-                fetch("/jobs" + actionUrl + jobId + "/", {
-                    method: "POST",
-                    headers: {
-                        "X-CSRFToken": csrfToken,
-                        "Content-Type": "application/json"
-                    }
-                })
-                .then(response => {
-                    //Error Thrown if response is not ok
-                    if (!response.ok) {
-                        throw new Error("HTTP error " + response.status);
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    //Displays the message that the process was successful 
-                    //Can comment this out for production to be less intrusive
-                    alert(data.message);
-                    //Checks if the button says save, replaces with the opposite
-                    this.textContent = this.textContent.trim() === "Save" ? "Unsave" : "Save";
-                })
-                //Errors if anything goes unexpectadly
-                .catch(error => console.error("Error:", error));
-            });
-        });
-    });
-    </script>
+
 {% endblock  %}
 
 
