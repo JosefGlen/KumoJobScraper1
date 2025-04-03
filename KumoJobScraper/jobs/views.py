@@ -13,7 +13,7 @@ def list(request):
 
 @login_required(login_url="/users/login")
 def page(request, id):
-    # Gets the only job that matches the slug
+    # Gets the only job that matches the id
     job = Jobs.objects.get(id=id)
     return render(request, 'jobs/page.html', { 'job': job})
 
