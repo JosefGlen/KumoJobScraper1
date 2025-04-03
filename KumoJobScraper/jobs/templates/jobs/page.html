@@ -7,11 +7,13 @@
 {% endblock title %}
 
 {% block content %}
-    <section>
-        <h1>{{ job.title }}</h1>
+    <section style="overflow:auto;">
+        <h1><a href="{{ job.url }}" target="_blank">{{ job.title }}</a></h1>
             <p> {{ job.company }}</p>
-            <p> {{ job.description }}</p>
-            <p> ${{ job.salary }}</p>
+            <div class="job-description">
+                {{ job.description|safe }}
+            </div>
+            <p>{{ job.salary }}</p>
             <p>{{ job.date }}</p>
     </section>
 {% endblock content %}
