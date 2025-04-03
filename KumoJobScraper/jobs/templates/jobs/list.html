@@ -9,7 +9,7 @@
         {% csrf_token %}
     </form>
 
-    <section>
+    <section style="overflow:auto;">
 
          <!--Job search bar will go here-->
         <div class="searchposition">     
@@ -40,7 +40,7 @@
                         {{ job.title }}
                     </a>
                 </h2> 
-                <h3>Salary:  ${{ job.salary }}</h3>
+                <h3>Salary: {{ job.salary }}</h3>
                 <p> {{ job.company }}</p>
                 <p class="jobdesctxt">Description: {{ job.description }}</p>
                 
