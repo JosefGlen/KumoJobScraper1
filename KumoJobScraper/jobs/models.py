@@ -3,11 +3,12 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Jobs(models.Model):
+    website = models.CharField(max_length=20)
     title = models.CharField(max_length=75)
     description = models.TextField()
     company = models.CharField(max_length=50)
     location = models.CharField(max_length=50, default="Location Unknown")
-    salary = models.CharField(max_length=50, default="Salary Unknown")
+    salary = models.CharField(max_length=50, default="")
     url = models.URLField(unique=True)
     date = models.DateField(auto_now_add=True)
 
