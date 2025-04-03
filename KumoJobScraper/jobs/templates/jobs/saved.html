@@ -5,19 +5,32 @@
 {% endblock title %}
 
 {% block content %}
+    <form id="csrf-form">
+        {% csrf_token %}
+    </form>
+
     <h1>Saved Jobs</h1>
-    {% for saved_job in saved_jobs %}
-        <p class="Joblistings"> 
-            <a href="{% url 'jobs:page' id=saved_job.job.id %}">
-                {{ saved_job.job.title }}
-            </a> 
-            at {{ saved_job.job.company }}
-        </p>
-        
-    {% comment %} If the list is empty, let the user know {% endcomment %}
-    {% empty %}
-        <p>No saved jobs yet.</p>
-    {% endfor %}
+
+    <section style="overflow:auto; width: 80%;">
+        {% for saved_job in saved_jobs %}
+            <p class="Joblistings"> 
+                <button class="save-job-btn buttonresults" 
+                data-job-id="{{ saved_job.job.id }}" 
+                data-save-url="{% url 'jobs:save_job' saved_job.job.id %}" 
+                data-unsave-url="{% url 'jobs:unsave_job' saved_job.job.id %}">
+                    Unsave
+                </button>
+                <a href="{% url 'jobs:page' id=saved_job.job.id %}">
+                    {{ saved_job.job.title }}
+                </a>
+                at {{ saved_job.job.company }}
+            </p>
+            
+        {% comment %} If the list is empty, let the user know {% endcomment %}
+        {% empty %}
+            <p>No saved jobs yet.</p>
+        {% endfor %}
+    </section>
 {% endblock %}
 
 {% block scripts %}{% endblock  %}
