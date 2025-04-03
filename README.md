@@ -43,7 +43,7 @@ python -m venv .venv
 source .venv/bin/activate  # On Windows use: .venv/Scripts/activate
 
 # TroubleShooting
-# It may be neccessary to run
+# It may be neccessary to run first
 Set-ExecutionPolicy Unrestricted -Scope Process
 
 # Install dependencies
@@ -51,6 +51,9 @@ pip install -r requirements.txt
 
 # Choose the Directory
 cd KumoJobScraper
+
+# Migrate Object Classes
+py manage.py migrate
 
 # Run the Django server
 py manage.py runserver
