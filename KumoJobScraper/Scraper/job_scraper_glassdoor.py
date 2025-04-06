@@ -28,9 +28,21 @@ def jobs_posted_today(website):
     
     time.sleep(5)  # Wait for the results to load
 
-    if website["name"] == "linkedin":
-        exit_button = driver.find_element(By.CLASS_NAME, "modal__dismiss")
-        exit_button.click()
+    try:
+        #Nukes Linkedins stupid login in request, resets styling so that I can actually scroll
+        driver.execute_script("""
+            let modal = document.querySelector('.top-level-modal-container');
+            if (modal) {
+                modal.remove();
+            }
+
+            // Reset body styles that prevent scrolling
+            document.body.style.overflow = 'auto';
+            document.body.style.position = 'static';
+        """)
+        print("Modal forcibly removed.")
+    except Exception as e:
+        print(f"Failed to remove modal: {e}")
 
     # Extract job listings
     job_listings = []
@@ -96,7 +108,7 @@ def jobs_posted_today(website):
                 "url": url
             })
         except Exception as e:
-            print(f"Error extracting a job listing: {e}")
+            print(f"Error extracting a job listing")
             continue
     
     # Close the browser after scraping
