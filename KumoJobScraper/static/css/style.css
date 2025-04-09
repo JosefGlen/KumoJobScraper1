@@ -98,6 +98,9 @@ h1 {
     margin: 30px;
 }
 
+.paddreg {
+    padding: 15px;
+}
 
 /*formatting the paragraph*/
 .jobdesctxt {
@@ -122,11 +125,10 @@ input {
     text-align: justify;
 }
 
-/*The Save button Feature
+/*The Save button Feature */
 .save-job-btn {
-    float: left;
-    display: block;
-} */
+
+}
 .searchposition {
     margin: 10px;
 }

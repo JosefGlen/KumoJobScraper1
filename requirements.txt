@@ -2,3 +2,4 @@ Django==5.1.6
 Selenium==4.29.0
 BeautifulSoup4==4.13.3
 Webdriver-Manager==4.0.2
+fontawesomefree==6.0.0

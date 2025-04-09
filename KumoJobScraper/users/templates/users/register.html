@@ -7,7 +7,7 @@
 
 {% block content %}
     <h1>Sign Up</h1>
-    <form class="form-with-validation" action="/users/register/" method="post">
+    <form class="form-with-validation Joblistings paddreg" action="/users/register/" method="post">
         {% comment %} csrf_token checks that the request came from our website {% endcomment %}
         {% csrf_token %}
         {% comment %} Loads up the form that we passed with the views function {% endcomment %}
