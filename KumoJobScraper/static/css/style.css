@@ -98,6 +98,7 @@ h1 {
     margin: 30px;
 }
 
+
 /*formatting the paragraph*/
 .jobdesctxt {
    width: auto;
@@ -116,18 +117,16 @@ input {
     padding-left: 50px;
 }
 
+/*Modified Job titles and making them centered with page*/
 .headingh2 {
-    text-align: center;
-    padding-left: 50px;
+    text-align: justify;
 }
 
-/*The Save button Feature*/
+/*The Save button Feature
 .save-job-btn {
-    margin-right: auto;
-    display: inline-block;
     float: left;
-    margin-left: 9px;
-}
+    display: block;
+} */
 .searchposition {
     margin: 10px;
 }
@@ -136,12 +135,29 @@ input {
     padding-bottom: 9px;
 }
 
-.btnloginfix {
-    padding: 9px;
-}
-
 /* Simple fix for top margin on text for search bars*/
-
 .ppadmarg {
     padding-bottom: 3px;
+}
+
+.centering {
+    display: flex;
+    justify-content: center;  
+    align-items: center;  
+}
+.centering h1 {
+    flex-grow: 1;            
+    text-align: center;  
+}
+
+.centering button {
+    margin-left: 0;
+}
+
+a {
+    padding: 3px;
+}
+
+.quickpad {
+    padding: 9px;
 }

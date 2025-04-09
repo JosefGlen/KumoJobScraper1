@@ -13,7 +13,7 @@
         {% csrf_token %}
         {% comment %} Loads up the form that we passed with the views function {% endcomment %}
         {{ form }}
-        <button class="btnloginfix">Login</button>
+        <button>Login</button>
     </form>
     <a class="signup-text" href="{% url 'users:register' %}">New? Sign Up Here</a>
 </article>

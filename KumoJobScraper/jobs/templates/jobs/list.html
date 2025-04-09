@@ -11,6 +11,10 @@
 
     <section style="overflow:auto;">
 
+        <!--Page Heading-->
+        <h1>Jobs</h1>
+
+
          <!--Job search bar will go here-->
         <div class="searchposition">  
         <p class="ppadmarg"> Search for Jobs: </p>   
@@ -19,8 +23,6 @@
         <input type="text" placeholder="City, State">
         </div>
 
-        <!--Page Heading-->
-        <h1>Jobs</h1>
         {% comment %} Symantixs for python code {% endcomment %}
         {% comment %} A for loop that grabs all of the jobs that are currently in the database {% endcomment %}
         {% for job in jobs %}
@@ -34,16 +36,18 @@
                  <i class="fa-solid fa-bookmark"></i>
                  <i class="fa-regular fa-bookmark"></i>
                 -->
-                <button class="save-job-btn" 
+                <button class="centering" 
                 data-job-id="{{ job.id }}" 
                 data-save-url="{% url 'jobs:save_job' job.id %}" 
                 data-unsave-url="{% url 'jobs:unsave_job' job.id %}">
                     {% if job in saved_jobs %}Unsave{% else %}Save{% endif %}
                 </button>
-                <h2 class="headingh2"> 
+
+                <h2 class ="centering"> 
                     <a href="{% url 'jobs:page' id=job.id %}">
                         {{ job.title }}
                     </a>
+                
                 </h2> 
                 <h3>Salary: {{ job.salary }}</h3>
                 <p> {{ job.company }}</p>
