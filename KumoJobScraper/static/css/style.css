@@ -117,18 +117,19 @@ input {
 }
 
 .headingh2 {
-    text-align: left;
+    text-align: center;
     padding-left: 50px;
-    display: inline-flex;
 }
 
-.buttonresults {
+/*The Save button Feature*/
+.save-job-btn {
     margin-right: auto;
-    display: inline-flex;
-    flex-direction: left;
+    display: inline-block;
+    float: left;
+    margin-left: 9px;
 }
 .searchposition {
-    padding-bottom: 50px;
+    margin: 10px;
 }
 
 .formposition {
@@ -137,4 +138,10 @@ input {
 
 .btnloginfix {
     padding: 9px;
+}
+
+/* Simple fix for top margin on text for search bars*/
+
+.ppadmarg {
+    padding-bottom: 3px;
 }
