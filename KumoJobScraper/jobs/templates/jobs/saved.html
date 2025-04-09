@@ -18,8 +18,11 @@
                 data-job-id="{{ saved_job.job.id }}" 
                 data-save-url="{% url 'jobs:save_job' saved_job.job.id %}" 
                 data-unsave-url="{% url 'jobs:unsave_job' saved_job.job.id %}">
-                    Unsave
-                </button>
+                {% if job in saved_jobs %}
+                <i class="fa-regular fa-bookmark"></i>
+            {% else %}
+                <i class="fa-solid fa-bookmark"></i>
+            {% endif %}                            </button>
                 <a href="{% url 'jobs:page' id=saved_job.job.id %}">
                     {{ saved_job.job.title }}
                 </a>
