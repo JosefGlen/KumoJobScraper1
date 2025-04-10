@@ -78,7 +78,15 @@
 {% endblock content %}
 
 {% block scripts %}
-
+<script>
+    document.querySelectorAll('.searchposition input').forEach((input) => {
+      input.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+          this.form.submit();
+        }
+      });
+    });
+  </script>
 {% endblock  %}
 
 
