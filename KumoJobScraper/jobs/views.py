@@ -12,7 +12,7 @@ def list(request):
     jobs = Jobs.objects.all()
 
     if query:
-        jobs = jobs.filter(title__icontains=query) | jobs.filter(description__icontains=query)
+        jobs = jobs.filter(title__icontains=query) | jobs.filter(description__icontains=query) | jobs.filter(company__icontains=query)
 
 
     if location:
