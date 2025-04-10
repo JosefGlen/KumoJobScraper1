@@ -7,13 +7,34 @@
 {% endblock title %}
 
 {% block content %}
-    <section style="overflow:auto;">
-        <h1><a href="{{ job.url }}" target="_blank">{{ job.title }}</a></h1>
-            <p> {{ job.company }}</p>
-            <div class="job-description">
-                {{ job.description|safe }}
-            </div>
-            <p>{{ job.salary }}</p>
-            <p>{{ job.date }}</p>
+    <form id="csrf-form">
+        {% csrf_token %}
+    </form>
+
+    <section style="overflow: auto; width: 80%; max-height: 80vh; padding: 1rem;">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+            <button class="save-job-btn centering hidebtn"
+                    style="height: 2.25rem; width: 2.25rem; display: flex; align-items: center; justify-content: center;"
+                    data-job-id="{{ job.id }}" 
+                    data-save-url="{% url 'jobs:save_job' job.id %}" 
+                    data-unsave-url="{% url 'jobs:unsave_job' job.id %}">
+                {% if job in saved_jobs %}
+                    <i class="fa-solid fa-bookmark"></i>
+                {% else %}
+                    <i class="fa-regular fa-bookmark"></i>
+                {% endif %}
+            </button>
+            
+            <h1 style="margin: 0; font-size: 2.75rem;">
+              <a href="{{ job.url }}" target="_blank">{{ job.title }}</a>
+            </h1>
+          </div>
+        <p> {{ job.company }}</p>
+        
+        <div class="job-description">
+            {{ job.description|safe }}
+        </div>
+        <p>{{ job.salary }}</p>
+        <p>{{ job.date }}</p>
     </section>
 {% endblock content %}
