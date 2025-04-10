@@ -12,7 +12,8 @@ document.addEventListener("DOMContentLoaded", function() {
             //Attribute is defined on creation
             let jobId = this.getAttribute("data-job-id");
             //Checks if the content of the button has the word save, then adds the appropriate url
-            let actionUrl = this.textContent.trim() === "Save" ? "/save-job/" : "/unsave-job/";
+            const icon = this.querySelector('i');
+            let actionUrl = icon.classList.contains("fa-regular") ? "/save-job/" : "/unsave-job/";
             console.log(actionUrl);
             let csrfToken = getCsrfToken();
 
@@ -36,7 +37,13 @@ document.addEventListener("DOMContentLoaded", function() {
                 //Can comment this out for production to be less intrusive
                 alert(data.message);
                 //Checks if the button says save, replaces with the opposite
-                this.textContent = this.textContent.trim() === "Save" ? "Unsave" : "Save";
+                if (icon.classList.contains("fa-regular")){
+                    icon.classList.remove('fa-regular');
+                    icon.classList.add('fa-solid');
+                } else {
+                    icon.classList.remove('fa-solid');
+                    icon.classList.add('fa-regular');
+                }
             })
             //Errors if anything goes unexpectadly
             .catch(error => console.error("Error:", error));
