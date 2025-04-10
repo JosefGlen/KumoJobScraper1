@@ -16,12 +16,25 @@
 
 
          <!--Job search bar will go here-->
-        <div class="searchposition">  
-        <p class="ppadmarg"> Search for Jobs: </p>   
-        <input type="text" placeholder="Search for Jobs...">
-        <p class="ppadmarg"> Location: </p>
-        <input type="text" placeholder="City, State">
-        </div>
+         <form method="GET" action="{% url 'jobs:list' %}">
+            <div class="searchposition">  
+              <p class="ppadmarg"> Search for Jobs: </p>   
+              <input 
+                type="text" 
+                name="query" 
+                placeholder="Search for Jobs..." 
+                value="{{ query|default:'' }}"
+              >
+          
+              <p class="ppadmarg"> Location: </p>
+              <input 
+                type="text" 
+                name="location" 
+                placeholder="City, State" 
+                value="{{ location|default:'' }}"
+              >
+            </div>
+          </form>
 
         {% comment %} Symantixs for python code {% endcomment %}
         {% comment %} A for loop that grabs all of the jobs that are currently in the database {% endcomment %}
@@ -54,7 +67,8 @@
                 
                 </h2> 
                 <h3>Salary: {{ job.salary }}</h3>
-                <p> {{ job.company }}</p>
+                <p> {{ job.company }} </p>
+                <p> {{ job.location }} </p>
                 
             </article>
         {% comment %} Conditional Upon jobs being empty {% endcomment %}
@@ -65,7 +79,15 @@
 {% endblock content %}
 
 {% block scripts %}
-
+<script>
+    document.querySelectorAll('.searchposition input').forEach((input) => {
+      input.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+          this.form.submit();
+        }
+      });
+    });
+  </script>
 {% endblock  %}
 
 
