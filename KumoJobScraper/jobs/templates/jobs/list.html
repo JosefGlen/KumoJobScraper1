@@ -17,8 +17,8 @@
 
          <!--Job search bar will go here-->
          <form method="GET" action="{% url 'jobs:list' %}">
-        <div class="searchposition">  
-        <p class="ppadmarg"> Search for Jobs: </p>   
+            <div class="searchposition">  
+              <p class="ppadmarg"> Search for Jobs: </p>   
               <input 
                 type="text" 
                 name="query" 
@@ -26,14 +26,14 @@
                 value="{{ query|default:'' }}"
               >
           
-        <p class="ppadmarg"> Location: </p>
+              <p class="ppadmarg"> Location: </p>
               <input 
                 type="text" 
                 name="location" 
                 placeholder="City, State" 
                 value="{{ location|default:'' }}"
               >
-        </div>
+            </div>
           </form>
 
         {% comment %} Symantixs for python code {% endcomment %}
