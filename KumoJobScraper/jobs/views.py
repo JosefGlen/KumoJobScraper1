@@ -6,10 +6,28 @@ from django.http import JsonResponse
 # Sends users to the login page if not logged in
 @login_required(login_url="/users/login")
 def list(request):
-    jobs = Jobs.objects.all()  # Fetch all jobs
-    saved_jobs = Jobs.objects.filter(savedjob__user=request.user)  # Only jobs saved by this user
-    
-    return render(request, "jobs/list.html", {"jobs": jobs, "saved_jobs": saved_jobs})
+    query = request.GET.get("query", "")
+    location = request.GET.get("location", "")
+
+    jobs = Jobs.objects.all()
+
+    if query:
+        jobs = jobs.filter(title__icontains=query) | jobs.filter(description__icontains=query)
+
+
+    if location:
+        jobs = jobs.filter(location__icontains=location)
+
+    saved_jobs = Jobs.objects.filter(savedjob__user=request.user)
+
+    context = {
+        "jobs": jobs,
+        "saved_jobs": saved_jobs,
+        "query": query,
+        "location": location,
+    }
+
+    return render(request, "jobs/list.html", context)
 
 @login_required(login_url="/users/login")
 def page(request, id):
