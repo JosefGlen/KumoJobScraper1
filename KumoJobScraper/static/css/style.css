@@ -88,3 +88,78 @@ h1 {
     color: #666;
     margin-bottom: 20px;
 }
+
+/*This will be the results for Jobs class, so we can make it look good.*/
+.Joblistings {
+    padding: 10px;
+    border: solid;
+    border-color: #4a90e2;
+    border-radius: 25px;
+    margin: 30px;
+}
+
+.paddreg {
+    padding: 15px;
+}
+
+/*formatting the paragraph*/
+.jobdesctxt {
+   width: auto;
+   padding-left: 40px;
+   padding-right: 40px;
+}
+/*Space reserved for search bar implementaiton CSS*/
+input {
+    padding: 5px;
+    border-radius: 25px;
+    border-color: gray;
+}
+/*going to comment more on what this all does*/
+.headingjob {
+    text-align: left;
+    padding-left: 50px;
+}
+
+/*Modified Job titles and making them centered with page*/
+.headingh2 {
+    text-align: justify;
+}
+
+/*The Save button Feature */
+.save-job-btn {
+
+}
+.searchposition {
+    margin: 10px;
+}
+
+.formposition {
+    padding-bottom: 9px;
+}
+
+/* Simple fix for top margin on text for search bars*/
+.ppadmarg {
+    padding-bottom: 3px;
+}
+
+.centering {
+    display: flex;
+    justify-content: center;  
+    align-items: center;  
+}
+.centering h1 {
+    flex-grow: 1;            
+    text-align: center;  
+}
+
+.centering button {
+    margin-left: 0;
+}
+
+a {
+    padding: 3px;
+}
+
+.quickpad {
+    padding: 9px;
+}

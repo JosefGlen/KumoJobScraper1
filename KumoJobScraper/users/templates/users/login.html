@@ -6,6 +6,7 @@
 {% endblock %}
 
 {% block content %}
+<article class="Joblistings">
     <h1>Login</h1>
     <form class="form-with-validation" action="/users/login/" method="post">
         {% comment %} csrf_token checks that the request came from our website {% endcomment %}
@@ -15,4 +16,5 @@
         <button>Login</button>
     </form>
     <a class="signup-text" href="{% url 'users:register' %}">New? Sign Up Here</a>
+</article>
 {% endblock content %}

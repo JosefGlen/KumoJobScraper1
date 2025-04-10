@@ -15,6 +15,8 @@
     <script src="{% static 'js/main.js' %}" defer></script>
     <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}" >
     <meta name="csrf-token" content="{{ csrf_token }}">
+        <!-- One file includes all the Font Awesome Free icons and utilities -->
+    <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
 </head>
 <body>
     {% comment %} Checks if the user is logged in or not {% endcomment %}
@@ -44,7 +46,7 @@
     </nav>
     {% endif %}
     {% comment %} This is where the contents of the page will go, below the nav bar {% endcomment %}
-    <main>
+    <main class="jobsresults">
         {% block content %}
         {% endblock %}
     </main>
