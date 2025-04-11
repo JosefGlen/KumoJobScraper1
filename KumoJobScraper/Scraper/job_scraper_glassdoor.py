@@ -28,36 +28,42 @@ def jobs_posted_today(website):
     
     time.sleep(5)  # Wait for the results to load
 
-    try:
-        #Nukes Linkedins stupid login in request, resets styling so that I can actually scroll
-        driver.execute_script("""
-            let modal = document.querySelector('.top-level-modal-container');
-            if (modal) {
-                modal.remove();
-            }
+    if website["name"] == "linkedin":
+        try:
+            #Nukes Linkedins stupid login in request, resets styling so that I can actually scroll
+            driver.execute_script("""
+                let modal = document.querySelector('.top-level-modal-container');
+                if (modal) {
+                    modal.remove();
+                }
 
-            // Reset body styles that prevent scrolling
-            document.body.style.overflow = 'auto';
-            document.body.style.position = 'static';
-        """)
-        print("Modal forcibly removed.")
-    except Exception as e:
-        print(f"Failed to remove modal: {e}")
+                // Reset body styles that prevent scrolling
+                document.body.style.overflow = 'auto';
+                document.body.style.position = 'static';
+            """)
+            print("Modal forcibly removed.")
+        except Exception as e:
+            print(f"Failed to remove modal: {e}")
 
     # Extract job listings
     job_listings = []
 
     # Commented Out For testing purposes - Grabs every Job that meets those criteria
     # Keep clicking "Load More" until all the jobs for today are loaded
-    # while True:
-    #     try:
-    #         # Wait for the "Load More" button to be clickable
-    #         load_more_button = driver.find_element(By.XPATH, "//button[@data-test='load-more']")
-    #         load_more_button.click()  # Click the "Load More" button
-    #         time.sleep(5)  # Wait for more jobs to load
-    #     except Exception as e:
-    #         print("No more jobs to load or error clicking 'Load More':")
-    #         break
+    if website["name"] == "glassdoor":
+        while True:
+            try:
+                # Scroll to the bottom of the page
+                driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+                time.sleep(2)  # Wait a bit for content to load
+
+                # Find and click the "Load More" button if it exists
+                load_more_button = driver.find_element(By.XPATH, "//button[@data-test='load-more']")
+                load_more_button.click()
+                time.sleep(5)  # Wait for more jobs to load after clicking
+            except Exception as e:
+                print("No more jobs to load or error clicking 'Load More':", e)
+                break
 
     # Loop to extract the job details from each result on the page
     job_elements = driver.find_elements(By.CLASS_NAME, website["job_card"])
